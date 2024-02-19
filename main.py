@@ -1,14 +1,18 @@
 from itertools import permutations, product
-nums = [9, 6, 7, 7]
-ops = ["*", "/", "+", "-"]
-GOAL = 10
-count = 0
-no_brackets = []
-brackets = []
+ops = ["*", "/", "+", "-"]  # mathematical operations to use
+GOAL = 10  # evaluation goal
+count = 0  # amount of successful equations found
+solutions = []  # array of successful solutions
+
+nums = [9, 6, 7, 7]  # the 4 digits to solve for
 
 
 def equalsGOAL(equation):
-    global count, GOAL
+    """
+    Function that evaluates a given mathematical equation, compares it to the GOAL
+    and appends it to the appropriate list.
+    """
+
     try:
         res = eval(equation)
     except ZeroDivisionError:
@@ -17,8 +21,7 @@ def equalsGOAL(equation):
     if res != GOAL: return
 
     count += 1
-    if "(" in equation: brackets.append(equation)
-    else: no_brackets.append(equation)
+    solutions.append(equation)
 
 
 nums = [*map(str, nums)]
