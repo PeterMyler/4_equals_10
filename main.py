@@ -12,6 +12,7 @@ def equalsGOAL(equation):
     Function that evaluates a given mathematical equation, compares it to the GOAL
     and appends it to the appropriate list.
     """
+    global count, solutions, GOAL
 
     try:
         res = eval(equation)
@@ -26,7 +27,7 @@ def equalsGOAL(equation):
 
 nums = [*map(str, nums)]
 for perm in set(permutations(nums)):
-    for op1, op2, op3 in set([(a, b, c) for a, b, c in product(*[ops]*3)]):
+    for op1, op2, op3 in set(permutations(ops * 3, 3)):
         # no brackets
         eq = "".join([perm[0], op1, perm[1], op2, perm[2], op3, perm[3]])
         equalsGOAL(eq)
@@ -45,7 +46,7 @@ for perm in set(permutations(nums)):
 print("Solutions found:", count)
 
 print("Without brackets:")
-[print(*s) for s in no_brackets]
+[print(*s) for s in solutions if "(" not in s]
 
 print("\nWith brackets:")
-[print(*s) for s in brackets]
+[print(*s) for s in solutions if "(" in s]
