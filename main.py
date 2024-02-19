@@ -1,8 +1,8 @@
-from itertools import permutations, product
+from itertools import permutations, chain, zip_longest
 ops = ["*", "/", "+", "-"]  # mathematical operations to use
 GOAL = 10  # evaluation goal
 count = 0  # amount of successful equations found
-solutions = []  # array of successful solutions
+solutions = [[], []]  # array of successful solutions without brackets and with brackets
 
 nums = [9, 6, 7, 7]  # the 4 digits to solve for
 
@@ -22,14 +22,17 @@ def equalsGOAL(equation):
     if res != GOAL: return
 
     count += 1
-    solutions.append(equation)
+    solutions[int("(" in equation)].append(equation)
+    # bool is 1 if True, appending to solutions[1]
+    # bool is 0 if False, appending to solutions[0]
+    return
 
 
 nums = [*map(str, nums)]
 for perm in set(permutations(nums)):
-    for op1, op2, op3 in set(permutations(ops * 3, 3)):
+    for ops in set(permutations(ops * 3, 3)):
         # no brackets
-        eq = "".join([perm[0], op1, perm[1], op2, perm[2], op3, perm[3]])
+        eq = "".join(list(chain(*zip(perm[:-1], ops)))+[perm[-1]])
         equalsGOAL(eq)
 
         # brackets for one operation
@@ -46,7 +49,9 @@ for perm in set(permutations(nums)):
 print("Solutions found:", count)
 
 print("Without brackets:")
-[print(*s) for s in solutions if "(" not in s]
+for s in solutions[0]:
+    print(*s)
 
 print("\nWith brackets:")
-[print(*s) for s in solutions if "(" in s]
+for s in solutions[1]:
+    print(*s)
