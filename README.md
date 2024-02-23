@@ -8,5 +8,5 @@ An algorithm that finds all solutions to the 4=10 game.
 - The order of the digits can be changed.
 
 # Example
-Given: 
+Given: \
 Solution:
