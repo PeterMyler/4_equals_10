@@ -11,6 +11,6 @@ The goal is to make an expression that equals exactly 10 by using any of 4 mathe
 # Example
 Given: 9, 6, 7, 7 \
 Solutions:
-- 6 / ( 9 - 7 ) + 7\
-- 7 - 6 / ( 7 - 9 )\
+- 6 / ( 9 - 7 ) + 7
+- 7 - 6 / ( 7 - 9 )
 - 7 + 6 / ( 9 - 7 )
