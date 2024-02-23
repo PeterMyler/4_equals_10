@@ -10,10 +10,8 @@ digits = len(nums)
 
 
 def equalsGOAL(equation):
-    """
-    Function that evaluates a given mathematical equation, compares it to the GOAL
-    and appends it to the appropriate list.
-    """
+    """Evaluates a given mathematical equation, compares it to the GOAL
+    and appends it to the appropriate list."""
     global count, solutions, GOAL
 
     try:
