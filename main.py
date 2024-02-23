@@ -5,6 +5,7 @@ count = 0  # amount of successful equations found
 solutions = [[], []]  # array of successful solutions without brackets and with brackets
 
 nums = [9, 6, 7, 7]  # the 4 digits to solve for
+nums = list(map(str, nums))  # convert all the digits to strings
 
 
 def equalsGOAL(equation):
@@ -25,10 +26,8 @@ def equalsGOAL(equation):
     solutions[int("(" in equation)].append(equation)
     # bool is 1 if True, appending to solutions[1]
     # bool is 0 if False, appending to solutions[0]
-    return
 
 
-nums = [*map(str, nums)]
 for perm in set(permutations(nums)):
     for ops in set(permutations(ops * 3, 3)):
         # no brackets

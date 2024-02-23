@@ -9,5 +9,5 @@ The goal is to make an expression that equals exactly 10 by using any of 4 mathe
 - The order of the digits can be changed.
 
 # Example
-Given: \
+Given: 9, 6, 7, 7\
 Solution:
