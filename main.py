@@ -1,11 +1,12 @@
 from itertools import permutations, chain, zip_longest
-ops = ["*", "/", "+", "-"]  # mathematical operations to use
+ops = ["*", "/", "+", "-"]  # available mathematical operations to use
 GOAL = 10  # evaluation goal
 count = 0  # amount of successful equations found
 solutions = [[], []]  # array of successful solutions without brackets and with brackets
 
 nums = [9, 6, 7, 7]  # the 4 digits to solve for
 nums = list(map(str, nums))  # convert all the digits to strings
+digits = len(nums)
 
 
 def equalsGOAL(equation):
@@ -28,22 +29,25 @@ def equalsGOAL(equation):
     # bool is 0 if False, appending to solutions[0]
 
 
+def insertBrackets(string, index1, index2):
+    return string[:index1] + "(" + string[index1:index2] + ")" + string[index2:]
+
+
 for perm in set(permutations(nums)):
-    for ops in set(permutations(ops * 3, 3)):
+    for op in set(permutations(ops*(digits-1), digits-1)):
         # no brackets
-        eq = "".join(list(chain(*zip(perm[:-1], ops)))+[perm[-1]])
+        eq = "".join(perm[i]+op[i] for i in range(len(op)))+perm[-1]
         equalsGOAL(eq)
 
         # brackets for one operation
         for i in range(3):
-            eq2 = eq[:i*2]+"("+eq[i*2:i*2+3]+")"+eq[i*2+3:]
+            eq2 = insertBrackets(eq, i*2, i*2+3)
             equalsGOAL(eq2)
 
         # brackets for two operations
         for i in range(2):
-            eq3 = eq[:i * 2] + "(" + eq[i * 2:i * 2 + 5] + ")" + eq[i * 2 + 5:]
+            eq3 = insertBrackets(eq, i*2, i*2+5)
             equalsGOAL(eq3)
-
 
 print("Solutions found:", count)
 
