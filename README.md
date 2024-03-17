@@ -14,3 +14,5 @@ Solutions:
 - 6 / ( 9 - 7 ) + 7
 - 7 - 6 / ( 7 - 9 )
 - 7 + 6 / ( 9 - 7 )
+
+P.s. the goal can be changed to any number, it doesn't have to be 10.
