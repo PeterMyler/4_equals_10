@@ -1,4 +1,4 @@
-from itertools import permutations, chain, zip_longest
+from itertools import permutations, chain, zip_longest, product
 ops = ["*", "/", "+", "-"]  # available mathematical operations to use
 GOAL = 10  # evaluation goal
 count = 0  # amount of successful equations found
@@ -6,7 +6,7 @@ solutions = [[], []]  # array of successful solutions without brackets and with 
 
 nums = [9, 6, 7, 7]  # the 4 digits to solve for
 nums = list(map(str, nums))  # convert all the digits to strings
-digits = len(nums)
+digit_count = len(nums)
 
 
 def equalsGOAL(equation):
@@ -32,7 +32,7 @@ def insertBrackets(string, index1, index2):
 
 
 for perm in set(permutations(nums)):
-    for op in set(permutations(ops*(digits-1), digits-1)):
+    for op in product(ops, repeat=digit_count - 1):
         # no brackets
         eq = "".join(perm[i]+op[i] for i in range(len(op)))+perm[-1]
         equalsGOAL(eq)
