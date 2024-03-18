@@ -1,4 +1,4 @@
-from itertools import permutations, chain, zip_longest, product
+from itertools import permutations, product
 ops = ["*", "/", "+", "-"]  # available mathematical operations to use
 GOAL = 10  # evaluation goal
 count = 0  # amount of successful equations found
