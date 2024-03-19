@@ -30,7 +30,7 @@ def insertBrackets(string: str, index1: int, index2: int) -> str:
 
 
 for perm in set(permutations(nums)):
-    for op in product(ops, repeat=digit_count - 1):
+    for op in product(ops, repeat=digit_count-1):
         # no brackets
         eq = "".join(perm[i]+op[i] for i in range(len(op)))+perm[-1]
         equalsGOAL(eq, False)
@@ -50,7 +50,6 @@ print("Solutions found:", len(brackets) + len(no_brackets))
 print("Without brackets:")
 for s in no_brackets or [["None"]]:
     print(*s)
-
 
 print("\nWith brackets:")
 for s in brackets or [["None"]]:
