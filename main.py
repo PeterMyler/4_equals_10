@@ -1,4 +1,4 @@
-from itertools import permutations, product, combinations
+from itertools import permutations, product
 
 ops = ["*", "/", "+", "-"]  # mathematical operations
 GOAL = 10  # evaluation goal
